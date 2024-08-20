@@ -1,19 +1,20 @@
 CREATE TABLE IF NOT EXISTS "clientes" (
   "id" SERIAL PRIMARY KEY,
   "rg" VARCHAR(20) NOT NULL,
-  "endereco" VARCHAR(255) NOT NULL,
-  "bairro" VARCHAR(100) NOT NULL,
-  "cidade" VARCHAR(100) NOT NULL,
-  "estado" VARCHAR(2) NOT NULL,
+  "endereco" VARCHAR(255),
+  "bairro" VARCHAR(100),
+  "cidade" VARCHAR(100),
+  "estado" VARCHAR(2),
   "CEP" VARCHAR(9) NOT NULL,
   "nascimento" DATE
 );
 
 CREATE TABLE IF NOT EXISTS "hospedagens" (
   "id" SERIAL PRIMARY KEY,
-  "estado" VARCHAR(2) NOT NULL,
+  "estado" VARCHAR(2),
   "dataInicio" DATE NOT NULL,
   "dataFim" DATE NOT NULL,
-  "desconto" REAL NOT NULL,
-  "valorFinal" REAL NOT NULL
+  "desconto"  DECIMAL(10, 2),
+  "valorFinal"  DECIMAL(10, 2) NOT NULL,
+  "cliente_id" INTEGER REFERENCES "clientes"("id")
 );

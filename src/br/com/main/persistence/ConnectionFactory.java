@@ -9,7 +9,7 @@ public class ConnectionFactory {
 		
 		String user = "rh";
 		
-		String senha = "pc2";
+		String password = "pc2";
 		
 		String url = "jdbc:postgresql://127.0.0.1:5448/rh";
 		
@@ -17,7 +17,7 @@ public class ConnectionFactory {
 		
 		try {
 		Class.forName(driver);
-			con = (Connection) DriverManager.getConnection(url, user,senha);
+			con = (Connection) DriverManager.getConnection(url, user,password);
 			
 		} catch (ClassNotFoundException ex) {
 			System.err.print(ex.getMessage());
