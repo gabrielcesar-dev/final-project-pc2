@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS cliente (
   bairroCliente VARCHAR(100) NOT NULL,
   cidadeCliente VARCHAR(100) NOT NULL,
   estadoCliente VARCHAR(2) NOT NULL,
-  CEPCliente VARCHAR(9) NOT NULL,
+  cepCliente VARCHAR(9) NOT NULL,
   nascimentoCliente DATE NOT NULL,
 );
 
