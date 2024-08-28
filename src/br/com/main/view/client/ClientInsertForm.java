@@ -45,7 +45,7 @@ public class ClientInsertForm extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ClientInsertForm frame = new ClientInsertForm(null);
+					ClientInsertForm frame = new ClientInsertForm();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -80,7 +80,7 @@ public class ClientInsertForm extends JFrame {
 				    return;
 				}
 				
-				Cliente cliente = new Cliente(
+				Cliente client = new Cliente(
 				        0,
 				        textFieldNome.getText(),
 				        textFieldRg.getText(),
@@ -92,9 +92,9 @@ public class ClientInsertForm extends JFrame {
 				        nascimento
 				    );
 
-				 ClienteController cc = new ClienteController();
+				 // ClienteController cc = new ClienteController();
 
-				JOptionPane.showMessageDialog(null, "Log.", cc.inserir(cliente), JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Log.", "cc.inserir(client)", JOptionPane.INFORMATION_MESSAGE);
 			
 			}
 		});

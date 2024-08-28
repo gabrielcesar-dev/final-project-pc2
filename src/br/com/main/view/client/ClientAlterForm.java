@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -12,9 +15,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
+
+import br.com.main.model.Cliente;
+import br.com.main.util.Util;
 
 public class ClientAlterForm extends JFrame {
 
@@ -83,12 +90,19 @@ public class ClientAlterForm extends JFrame {
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO: delete action 
-				/*
-				Empregado emp = new Empregado();
-			    EmpregadoController ec = new EmpregadoController();
+				
+				Cliente client = new Cliente();
+
+				//ClienteController cc = new ClienteController();
 			    
-			    // TODO: fetch user from table
-			    emp.setId(id);
+
+				try {
+				    client.setCodClient(Integer.parseInt(id));
+
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(null, "Invalid ID", "Error", JOptionPane.ERROR_MESSAGE);
+				    return;
+				}
 			    
 
 			    Object[] options = { "Yes", "No" };
@@ -104,11 +118,12 @@ public class ClientAlterForm extends JFrame {
 			    );
 			    
 			    if (JOptionPane.YES_OPTION == response) {
-			    	JOptionPane.showConfirmDialog(null, ec.excluir(emp));
-			    	Util.fetchUsers();
+			    	JOptionPane.showMessageDialog(null, "Log", "cc.excluir()", JOptionPane.INFORMATION_MESSAGE);
 			    	System.exit(0);
+			    }else {
+			        JOptionPane.showMessageDialog(null, "User deletion canceled.", "Information", JOptionPane.INFORMATION_MESSAGE);
 			    }
-			*/
+			
 			}
 		});
 		btnDelete.setBackground(new Color(204, 0, 0));

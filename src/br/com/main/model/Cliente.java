@@ -14,6 +14,8 @@ public class Cliente {
 	private String cepCliente;
 	private LocalDate nascimentoCliente;
 	
+	public Cliente() {
+	}
 	
 	public Cliente(Integer codClient, String nomeCliente, String rgCliente, String enderecoCliente,
 			String bairroCliente, String cidadeCliente, String estadoCliente, String cepCliente,

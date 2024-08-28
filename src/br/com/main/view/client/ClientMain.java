@@ -92,7 +92,7 @@ public class ClientMain extends JFrame {
 		});
 		menuBar.add(mntmNewMenuItem);
 		
-		mntmNewMenuItem_1 = new JMenuItem("Insert");
+		mntmNewMenuItem_1 = new JMenuItem("New");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
