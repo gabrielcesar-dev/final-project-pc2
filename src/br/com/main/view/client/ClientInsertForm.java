@@ -4,15 +4,25 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+
+import br.com.main.model.Cliente;
+import br.com.main.util.Util;
+
 import javax.swing.JButton;
+import javax.swing.AbstractButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class ClientInsertForm extends JFrame {
@@ -35,7 +45,7 @@ public class ClientInsertForm extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ClientInsertForm frame = new ClientInsertForm();
+					ClientInsertForm frame = new ClientInsertForm(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,35 +69,33 @@ public class ClientInsertForm extends JFrame {
 		btnSave.addActionListener(new ActionListener() {
 			public	 void actionPerformed(ActionEvent e) {
 				// TODO: implement save action
-				/*
-				Empregado emp = new Empregado();
-			    EmpregadoController ec = new EmpregadoController();
-			    
-			    // Obtendo os valores dos campos de texto e definindo no objeto Empregado
-			    emp.setNome(textFieldNome.getText());
-			    emp.setRg(textFieldRg.getText());
-			    emp.setEndereco(textFieldEndereco.getText());
-			    emp.setBairro(textFieldBairro.getText());
-			    emp.setCidade(textFieldCidade.getText());
-			    emp.setEstado(textFieldEstado.getText());
-			    emp.setCep(textFieldCep.getText());
-			    emp.setNascimento(textFieldNascimento.getText());
-			    
-			    try {
-			        // Exemplo de campo numérico, se necessário
-			    } catch (NumberFormatException ex) {
-			    JOptionPane.showConfirmDialog(null, "invalid input");
-			        return;
-			    }
-			    
-			    // Limpa a mensagem e exibe o resultado da operação de alteração
-
-			   JOptionPane.showConfirmDialog(null, ec.inserir(emp));
-			    
-			    Util.fetchUser();
-			    
-			    */
 				
+				LocalDate nascimento = null;
+
+				try {
+				    nascimento = LocalDate.parse(textFieldNascimento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+				} catch (DateTimeParseException ex) {
+				    JOptionPane.showMessageDialog(null, "Invalid date format. Please enter the date in dd/MM/yyyy format.", "Input Error", JOptionPane.ERROR_MESSAGE);
+				    return;
+				}
+				
+				Cliente cliente = new Cliente(
+				        0,
+				        textFieldNome.getText(),
+				        textFieldRg.getText(),
+				        textFieldEndereco.getText(),
+				        textFieldBairro.getText(),
+				        textFieldCidade.getText(),
+				        textFieldEstado.getText(),
+				        textFieldCep.getText(),
+				        nascimento
+				    );
+
+				 ClienteController cc = new ClienteController();
+
+				JOptionPane.showMessageDialog(null, "Log.", cc.inserir(cliente), JOptionPane.INFORMATION_MESSAGE);
+			
 			}
 		});
 		btnSave.setForeground(Color.WHITE);
