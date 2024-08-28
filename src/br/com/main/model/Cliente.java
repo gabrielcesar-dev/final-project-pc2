@@ -13,6 +13,21 @@ public class Cliente {
 	private String estadoCliente;
 	private String cepCliente;
 	private LocalDate nascimentoCliente;
+	
+	
+	public Cliente(Integer codClient, String nomeCliente, String rgCliente, String enderecoCliente,
+			String bairroCliente, String cidadeCliente, String estadoCliente, String cepCliente,
+			LocalDate nascimentoCliente) {
+		this.codClient = codClient;
+		this.nomeCliente = nomeCliente;
+		this.rgCliente = rgCliente;
+		this.enderecoCliente = enderecoCliente;
+		this.bairroCliente = bairroCliente;
+		this.cidadeCliente = cidadeCliente;
+		this.estadoCliente = estadoCliente;
+		this.cepCliente = cepCliente;
+		this.nascimentoCliente = nascimentoCliente;
+	}
 
 	public Integer getCodClient() {
 		return codClient;
