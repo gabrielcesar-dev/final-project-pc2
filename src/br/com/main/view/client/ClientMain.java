@@ -9,6 +9,9 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import br.com.main.util.Util;
+
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -101,7 +104,7 @@ public class ClientMain extends JFrame {
 		mntmNewMenuItem_3 = new JMenuItem("Refresh");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				fetchUsers();
+				Util.fetchUsers(tblUsers);
 			}
 		});
 		mntmNewMenuItem_3.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -127,6 +130,26 @@ public class ClientMain extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		
 		tblUsers = new JTable();
+		tblUsers.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				 int row = tblUsers.getSelectedRow();
+			        if (row != -1) { 
+			            String id = tblUsers.getValueAt(row, 0).toString();
+			            String nome = tblUsers.getValueAt(row, 1).toString();
+			            String rg = tblUsers.getValueAt(row, 2).toString();
+			            String endereco = tblUsers.getValueAt(row, 3).toString();
+			            String bairro = tblUsers.getValueAt(row, 4).toString();
+			            String cidade = tblUsers.getValueAt(row, 5).toString();
+			            String estado = tblUsers.getValueAt(row, 6).toString();
+			            String cep = tblUsers.getValueAt(row, 7).toString();
+			            String nascimento = tblUsers.getValueAt(row, 8).toString();
+
+			            ClientAlterForm form = new ClientAlterForm(id, nome, rg, endereco, bairro, cidade, estado, cep, nascimento);
+			            form.setVisible(true); 
+			        }
+			}
+		});
 		tblUsers.setBorder(null);
 		tblUsers.setFillsViewportHeight(true);
 		tblUsers.setForeground(Color.BLACK);
@@ -176,60 +199,6 @@ public class ClientMain extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 		
-		// fetch data dynamically
-        Timer timer = new Timer(2000, new ActionListener() { 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                fetchUsers();
-            }
-        });
-        timer.start();
-	}
-	
-	public void fetchUsers() {
-		/* TODO: fetch data
-		
-		List<user> users = new ArrayList<>();
-		UserController ec = new UserController();
-		users = ec.listAll();
-		
-		DefaultTableModel tbm = (DefaultTableModel) tblUsers.getModel();
-		
-		for (int i = tbm.getRowCount() - 1; i >= 0; i--) {
-			tbm.removeRow(i);
-		}
-		
-		int row = 0;
-		for (User user : users) {
-			tblUsers.setValueAt(user.getId(), row, 0);
-			tblUsers.setValueAt(user.getNome(), row, 1);
-			tblUsers.setValueAt(user.getRg(), row, 2);
-			tblUsers.setValueAt(user.getEndereco(), row, 3);
-			tblUsers.setValueAt(user.getBairro(), row, 4);
-			tblUsers.setValueAt(user.getCidade(), row, 5);
-			tblUsers.setValueAt(user.getEstado(), row, 6);
-			tblUsers.setValueAt(user.getCep(), row, 7);
-			tblUsers.setValueAt(user.getNascimento(), row, 8);
-			row++;
-		}
-		
-		*/	
-	}
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
+        Util.fetchUsers(tblUsers);
 	}
 }
