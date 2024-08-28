@@ -114,7 +114,7 @@ public class ClientAlterForm extends JFrame {
 		btnCancel.setForeground(Color.WHITE);
 		btnCancel.setBackground(new Color(255, 0, 51));
 		
-		JButton btnDelete = new JButton("X");
+		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO: delete action 

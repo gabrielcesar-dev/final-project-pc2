@@ -34,10 +34,10 @@ public class ClientMain extends JFrame {
 	private JPanel contentPane;
 	private JTable tblUsers;
 	private JMenuBar menuBar;
-	private JMenuItem mntmNewMenuItem;
-	private JMenuItem mntmNewMenuItem_1;
-	private JMenuItem mntmNewMenuItem_2;
-	private JMenuItem mntmNewMenuItem_3;
+	private JMenuItem mntmNewMenuItemHome;
+	private JMenuItem mntmNewMenuItemNew;
+	private JMenuItem mntmNewMenuExit;
+	private JMenuItem mntmNewMenuItemRefresh;
 
 	/**
 	 * Launch the application.
@@ -67,45 +67,45 @@ public class ClientMain extends JFrame {
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		mntmNewMenuItem = new JMenuItem("Home");
-		mntmNewMenuItem.setBorder(new LineBorder(new Color(0, 0, 0)));
-		mntmNewMenuItem.setHorizontalTextPosition(SwingConstants.CENTER);
-		mntmNewMenuItem.setFont(new Font("Dialog", Font.BOLD, 12));
-		mntmNewMenuItem.addActionListener(new ActionListener() {
+		mntmNewMenuItemHome = new JMenuItem("Home");
+		mntmNewMenuItemHome.setBorder(new LineBorder(new Color(0, 0, 0)));
+		mntmNewMenuItemHome.setHorizontalTextPosition(SwingConstants.CENTER);
+		mntmNewMenuItemHome.setFont(new Font("Dialog", Font.BOLD, 12));
+		mntmNewMenuItemHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		menuBar.add(mntmNewMenuItem);
+		menuBar.add(mntmNewMenuItemHome);
 		
-		mntmNewMenuItem_1 = new JMenuItem("New");
-		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+		mntmNewMenuItemNew = new JMenuItem("New");
+		mntmNewMenuItemNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ClientInsertForm form = new ClientInsertForm();
 				form.setVisible(true);
 				form.setLocationRelativeTo(null);
 			}
 		});
-		mntmNewMenuItem_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		menuBar.add(mntmNewMenuItem_1);
+		mntmNewMenuItemNew.setBorder(new LineBorder(new Color(0, 0, 0)));
+		menuBar.add(mntmNewMenuItemNew);
 		
-		mntmNewMenuItem_3 = new JMenuItem("Refresh");
-		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+		mntmNewMenuItemRefresh = new JMenuItem("Refresh");
+		mntmNewMenuItemRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Util.fetchUsers(tblUsers);
 			}
 		});
-		mntmNewMenuItem_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		menuBar.add(mntmNewMenuItem_3);
+		mntmNewMenuItemRefresh.setBorder(new LineBorder(new Color(0, 0, 0)));
+		menuBar.add(mntmNewMenuItemRefresh);
 		
-		mntmNewMenuItem_2 = new JMenuItem("Exit");
-		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+		mntmNewMenuExit = new JMenuItem("Exit");
+		mntmNewMenuExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-		mntmNewMenuItem_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		menuBar.add(mntmNewMenuItem_2);
+		mntmNewMenuExit.setBorder(new LineBorder(new Color(0, 0, 0)));
+		menuBar.add(mntmNewMenuExit);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.BLACK);
 		contentPane.setBackground(Color.WHITE);

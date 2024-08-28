@@ -1,35 +1,42 @@
 package br.com.main.util;
 
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import br.com.main.model.Cliente;
 
 public class Util {
-	public static void fetchUsers(JTable tblUsers) {
-		/* TODO: fetch data
+	public static void fetchUsers(JTable tblClients) {
+		// TODO: fetch data
 		
-		List<user> users = new ArrayList<>();
-		UserController ec = new UserController();
-		users = ec.listAll();
+		List<Cliente> clients = new ArrayList<>();
 		
-		DefaultTableModel tbm = (DefaultTableModel) tblUsers.getModel();
+		// ClienteController cc = new ClienteController();
 		
-		for (int i = tbm.getRowCount() - 1; i >= 0; i--) {
-			tbm.removeRow(i);
+		//clients = cc.listAll();
+		
+		DefaultTableModel tbl = (DefaultTableModel) tblClients.getModel();
+		for (int i = tbl.getRowCount() - 1; i >= 0; i--) {
+			tbl.removeRow(i);
 		}
 		
 		int row = 0;
-		for (User user : users) {
-			tblUsers.setValueAt(user.getId(), row, 0);
-			tblUsers.setValueAt(user.getNome(), row, 1);
-			tblUsers.setValueAt(user.getRg(), row, 2);
-			tblUsers.setValueAt(user.getEndereco(), row, 3);
-			tblUsers.setValueAt(user.getBairro(), row, 4);
-			tblUsers.setValueAt(user.getCidade(), row, 5);
-			tblUsers.setValueAt(user.getEstado(), row, 6);
-			tblUsers.setValueAt(user.getCep(), row, 7);
-			tblUsers.setValueAt(user.getNascimento(), row, 8);
+		for (Cliente client : clients) {
+            tbl.setValueAt(client.getCodClient(), row, 0);
+            tbl.setValueAt(client.getNomeCliente(), row, 1);
+            tbl.setValueAt(client.getRgCliente(), row, 2);
+            tbl.setValueAt(client.getEnderecoCliente(), row, 3);
+            tbl.setValueAt(client.getBairroCliente(), row, 4);
+            tbl.setValueAt(client.getCidadeCliente(), row, 5);
+            tbl.setValueAt(client.getEstadoCliente(), row, 6);
+            tbl.setValueAt(client.getCepCliente(), row, 7);
+            tbl.setValueAt(client.getNascimentoCliente().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), row, 8);
+            
 			row++;
-		}
-		
-		*/	
+		}		
 	}
 }
