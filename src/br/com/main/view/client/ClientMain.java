@@ -14,32 +14,18 @@ import br.com.main.util.Util;
 
 import java.awt.Font;
 import java.awt.Color;
-import java.awt.Dimension;
 
 import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JButton;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.CardLayout;
-import javax.swing.BoxLayout;
-import javax.swing.SpringLayout;
-import javax.swing.JLabel;
+
 import javax.swing.SwingConstants;
 
-import java.awt.BorderLayout;
-import java.awt.Button;
-import javax.swing.JPopupMenu;
-import java.awt.Component;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JMenuItem;
 import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 public class ClientMain extends JFrame {
@@ -47,7 +33,6 @@ public class ClientMain extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable tblUsers;
-	private JButton btnAction;
 	private JMenuBar menuBar;
 	private JMenuItem mntmNewMenuItem;
 	private JMenuItem mntmNewMenuItem_1;
@@ -63,6 +48,7 @@ public class ClientMain extends JFrame {
 				try {
 					ClientMain frame = new ClientMain();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -95,7 +81,9 @@ public class ClientMain extends JFrame {
 		mntmNewMenuItem_1 = new JMenuItem("New");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ClientInsertForm form = new ClientInsertForm();
+				form.setVisible(true);
+				form.setLocationRelativeTo(null);
 			}
 		});
 		mntmNewMenuItem_1.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -147,6 +135,7 @@ public class ClientMain extends JFrame {
 
 			            ClientAlterForm form = new ClientAlterForm(id, nome, rg, endereco, bairro, cidade, estado, cep, nascimento);
 			            form.setVisible(true); 
+			            form.setLocationRelativeTo(null);
 			        }
 			}
 		});

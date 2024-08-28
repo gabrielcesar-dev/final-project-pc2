@@ -1,6 +1,7 @@
 package br.com.main.view.client;
 
 import java.awt.Color;
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,13 +16,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
 import br.com.main.model.Cliente;
-import br.com.main.util.Util;
 
 public class ClientAlterForm extends JFrame {
 
@@ -43,7 +42,7 @@ public class ClientAlterForm extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ClientAlterForm frame = new ClientAlterForm("","","","","","","","","");
+					ClientAlterForm frame = new ClientAlterForm("0","","","","","","","","");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -68,8 +67,37 @@ public class ClientAlterForm extends JFrame {
 		btnAlter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO: implement alter
-				// same as insert
 				
+				LocalDate nascimento = null;
+				Integer codClient = null;
+
+				try {
+				    nascimento = LocalDate.parse(textFieldNascimento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+				    codClient = Integer.parseInt(id);
+
+				} catch (DateTimeParseException ex) {
+				    JOptionPane.showMessageDialog(null, "Invalid date format. Please enter the date in dd/MM/yyyy format.", "Input Error", JOptionPane.ERROR_MESSAGE);
+				    return;
+				}catch (NumberFormatException ex) {
+				    JOptionPane.showMessageDialog(null, "Invalid ID.", "Error", JOptionPane.ERROR_MESSAGE);
+				    return;
+				}
+				
+				Cliente client = new Cliente(
+				        codClient,
+				        textFieldNome.getText(),
+				        textFieldRg.getText(),
+				        textFieldEndereco.getText(),
+				        textFieldBairro.getText(),
+				        textFieldCidade.getText(),
+				        textFieldEstado.getText(),
+				        textFieldCep.getText(),
+				        nascimento
+				    );
+
+				 // ClienteController cc = new ClienteController();
+
+				JOptionPane.showMessageDialog(null, "Log.", "cc.alterar(client)", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		btnAlter.setForeground(Color.WHITE);
@@ -120,10 +148,7 @@ public class ClientAlterForm extends JFrame {
 			    if (JOptionPane.YES_OPTION == response) {
 			    	JOptionPane.showMessageDialog(null, "Log", "cc.excluir()", JOptionPane.INFORMATION_MESSAGE);
 			    	System.exit(0);
-			    }else {
-			        JOptionPane.showMessageDialog(null, "User deletion canceled.", "Information", JOptionPane.INFORMATION_MESSAGE);
 			    }
-			
 			}
 		});
 		btnDelete.setBackground(new Color(204, 0, 0));

@@ -4,14 +4,12 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTable;
+
 import javax.swing.border.EmptyBorder;
 
 import br.com.main.model.Cliente;
-import br.com.main.util.Util;
 
 import javax.swing.JButton;
-import javax.swing.AbstractButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
