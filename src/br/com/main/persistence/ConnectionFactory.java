@@ -7,11 +7,11 @@ public class ConnectionFactory {
 	public static Connection getConnection() {
 		String driver = "org.postgresql.Driver";
 		
-		String user = "rh";
+		String user = "Giovanni";
 		
-		String password = "pc2";
+		String password = "";
 		
-		String url = "jdbc:postgresql://127.0.0.1:5448/rh";
+		String url = "jdbc:postgresql://127.0.0.1:5432/gigachales";
 		
 		Connection con = null;
 		
