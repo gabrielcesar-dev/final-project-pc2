@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Cliente {
 
-	private Integer codClient;
+	private Integer codCliente;
 	private String nomeCliente;
 	private String rgCliente;
 	private String enderecoCliente;
@@ -17,10 +17,10 @@ public class Cliente {
 	public Cliente() {
 	}
 	
-	public Cliente(Integer codClient, String nomeCliente, String rgCliente, String enderecoCliente,
+	public Cliente(Integer codCliente, String nomeCliente, String rgCliente, String enderecoCliente,
 			String bairroCliente, String cidadeCliente, String estadoCliente, String cepCliente,
 			LocalDate nascimentoCliente) {
-		this.codClient = codClient;
+		this.codCliente = codCliente;
 		this.nomeCliente = nomeCliente;
 		this.rgCliente = rgCliente;
 		this.enderecoCliente = enderecoCliente;
@@ -31,12 +31,12 @@ public class Cliente {
 		this.nascimentoCliente = nascimentoCliente;
 	}
 
-	public Integer getCodClient() {
-		return codClient;
+	public Integer getCodCliente() {
+		return codCliente;
 	}
 
-	public void setCodClient(Integer codClient) {
-		this.codClient = codClient;
+	public void setCodCliente(Integer codCliente) {
+		this.codCliente = codCliente;
 	}
 
 	public String getNomeCliente() {

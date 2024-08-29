@@ -9,7 +9,6 @@ public class Chale {
 	private Double valorBaixaEstacao;
 
 	public Chale() {
-		
 	}
 
 	public Chale(Integer codChale, String localizacao, Integer capacidade, Double valorAltaEstacao,
