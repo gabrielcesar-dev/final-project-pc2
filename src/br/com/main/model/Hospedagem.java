@@ -13,10 +13,9 @@ public class Hospedagem {
     private Double desconto;
     private Double valorFinal;
 
-    // Construtor padrão
-    public Hospedagem() {}
+    public Hospedagem() {
+    }
 
-    // Construtor com todos os campos
     public Hospedagem(Integer codHospedagem, Integer codChale, Integer codCliente, String estado, LocalDate dataInicio, LocalDate dataFim, Integer qtdPessoas, Double desconto, Double valorFinal) {
         this.codHospedagem = codHospedagem;
         this.codChale = codChale;
@@ -29,7 +28,6 @@ public class Hospedagem {
         this.valorFinal = valorFinal;
     }
 
-    // Getters e Setters
     public Integer getCodHospedagem() {
         return codHospedagem;
     }
@@ -100,20 +98,5 @@ public class Hospedagem {
 
     public void setValorFinal(Double valorFinal) {
         this.valorFinal = valorFinal;
-    }
-
-    @Override
-    public String toString() {
-        return "Hospedagem{" +
-                "codHospedagem=" + codHospedagem +
-                ", codChale=" + codChale +
-                ", codCliente=" + codCliente +
-                ", estado='" + estado + '\'' +
-                ", dataInicio=" + dataInicio +
-                ", dataFim=" + dataFim +
-                ", qtdPessoas=" + qtdPessoas +
-                ", desconto=" + desconto +
-                ", valorFinal=" + valorFinal +
-                '}';
     }
 }
