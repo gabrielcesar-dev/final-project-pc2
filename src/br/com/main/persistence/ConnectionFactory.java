@@ -16,13 +16,14 @@ public class ConnectionFactory {
 		Connection con = null;
 		
 		try {
-		Class.forName(driver);
-			con = (Connection) DriverManager.getConnection(url, user,password);
+			Class.forName(driver);
+			con = (Connection) DriverManager.getConnection(url, user, password);
 			
 		} catch (ClassNotFoundException ex) {
 			System.err.print(ex.getMessage());
 			
 		} catch (SQLException e) {
+			System.err.print(e.getMessage());
 		}
 		
 		return con;
