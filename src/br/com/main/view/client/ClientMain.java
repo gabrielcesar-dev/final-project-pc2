@@ -92,7 +92,7 @@ public class ClientMain extends JFrame {
 		mntmNewMenuItemRefresh = new JMenuItem("Refresh");
 		mntmNewMenuItemRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Util.fetchUsers(tblUsers);
+				Util.fetchClient(tblUsers);
 			}
 		});
 		mntmNewMenuItemRefresh.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -148,7 +148,7 @@ public class ClientMain extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"id", "nome", "rg", "endereco", "bairro", "cidade", "estado", "CEP", "nascimento"
+				"codCliente", "nome", "rg", "endereco", "bairro", "cidade", "estado", "CEP", "nascimento"
 			}
 		) {
 			Class[] columnTypes = new Class[] {
@@ -188,6 +188,13 @@ public class ClientMain extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 		
-        Util.fetchUsers(tblUsers);
+        Timer timer = new Timer(5000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Util.fetchClient(tblUsers); 
+            }
+        });
+        
+        timer.start();
 	}
 }

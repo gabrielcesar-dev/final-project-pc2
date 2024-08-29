@@ -6,14 +6,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import br.com.main.model.Cliente;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -34,7 +37,7 @@ public class ClientInsertForm extends JFrame {
 	private JTextField textFieldCidade;
 	private JTextField textFieldEstado;
 	private JTextField textFieldCep;
-	private JTextField textFieldNascimento;
+	private JFormattedTextField textFieldNascimento;
 
 	/**
 	 * Launch the application.
@@ -93,6 +96,7 @@ public class ClientInsertForm extends JFrame {
 				 // ClienteController cc = new ClienteController();
 
 				JOptionPane.showMessageDialog(null, "Log.", "cc.inserir(client)", JOptionPane.INFORMATION_MESSAGE);
+				ClientInsertForm.this.dispose();
 			
 			}
 		});
@@ -104,7 +108,7 @@ public class ClientInsertForm extends JFrame {
 		JButton btnCancel = new JButton("cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				ClientInsertForm.this.dispose();
 			}
 		});
 		btnCancel.setForeground(Color.WHITE);
@@ -162,7 +166,12 @@ public class ClientInsertForm extends JFrame {
 		textFieldCep.setColumns(10);
 		
 		JLabel lblNascimento = new JLabel("Nascimento:");
-		textFieldNascimento = new JTextField();
+		
+		try {
+			textFieldNascimento = new JFormattedTextField(new MaskFormatter("##/##/####"));
+		} catch (ParseException e) {
+			System.err.println("Error creating date formatter: " + e.getMessage());
+		}
 		textFieldNascimento.setColumns(10);
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -228,5 +237,4 @@ public class ClientInsertForm extends JFrame {
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);
 	}
-
 }
