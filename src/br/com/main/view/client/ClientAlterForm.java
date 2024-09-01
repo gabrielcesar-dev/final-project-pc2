@@ -125,7 +125,7 @@ public class ClientAlterForm extends JFrame {
 			    
 
 				try {
-				    client.setCodClient(Integer.parseInt(id));
+				    client.setCodCliente(Integer.parseInt(id));
 
 				} catch (NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Invalid ID", "Error", JOptionPane.ERROR_MESSAGE);
