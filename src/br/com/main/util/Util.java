@@ -13,37 +13,6 @@ import br.com.main.model.Cliente;
 import br.com.main.model.Hospedagem;
 
 public class Util {
-	/*public static void fetchClient(JTable tblClients) {
-		// TODO: fetch data
-		
-		List<Cliente> clients = new ArrayList<>();
-		
-		ClienteController cc = new ClienteController();
-		
-		clients = cc.listarTodos();
-		
-		DefaultTableModel tbl = (DefaultTableModel) tblClients.getModel();
-		for (int i = tbl.getRowCount() - 1; i >= 0; i--) {
-			tbl.removeRow(i);
-		}
-		
-		int row = 0;
-		for (Cliente client : clients) {
-            tbl.setValueAt(client.getCodCliente(), row, 0);
-            tbl.setValueAt(client.getNomeCliente(), row, 1);
-            tbl.setValueAt(client.getRgCliente(), row, 2);
-            tbl.setValueAt(client.getEnderecoCliente(), row, 3);
-            tbl.setValueAt(client.getBairroCliente(), row, 4);
-            tbl.setValueAt(client.getCidadeCliente(), row, 5);
-            tbl.setValueAt(client.getEstadoCliente(), row, 6);
-            tbl.setValueAt(client.getCepCliente(), row, 7);
-            tbl.setValueAt(client.getNascimentoCliente().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), row, 8);
-            
-			row++;
-		}
-	}*/
-	
-	// gxpytz mode
 	public static void fetchClient(JTable tblClients) {
 	    List<Cliente> clients = new ArrayList<>();
 	    
@@ -52,10 +21,8 @@ public class Util {
 	    
 	    DefaultTableModel tbl = (DefaultTableModel) tblClients.getModel();
 	    
-	    // Remove todas as linhas existentes na tabela
 	    tbl.setRowCount(0);
 
-	    // Adiciona os clientes na tabela
 	    for (Cliente client : clients) {
 	        Object[] rowData = {
 	            client.getCodCliente(),
@@ -68,7 +35,7 @@ public class Util {
 	            client.getCepCliente(),
 	            client.getNascimentoCliente().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
 	        };
-	        tbl.addRow(rowData);  // Adiciona uma nova linha à tabela
+	        tbl.addRow(rowData);
 	    }
 	}
 
