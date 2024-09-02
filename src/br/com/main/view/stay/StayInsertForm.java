@@ -23,6 +23,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import br.com.main.model.Hospedagem;
+import br.com.main.controller.ChaleController;
+import br.com.main.controller.ClienteController;
+import br.com.main.controller.HospedagemController;
 import br.com.main.model.Chale;
 import br.com.main.model.Cliente;
 
@@ -68,9 +71,8 @@ public class StayInsertForm extends JFrame {
         cbxCodChale = new JComboBox<>();
         cbxCodCliente = new JComboBox<>();
 
-        /* TODO: Populate JComboBox with data
-         * 
-        HospedagemController hc = new HospedagemController();
+        
+        ChaleController chc = new ChaleController();
         ClienteController cc = new ClienteController();
 
         for (Chale c : chc.listarTodos()) {
@@ -81,7 +83,6 @@ public class StayInsertForm extends JFrame {
             cbxCodCliente.addItem( c.getNomeCliente() + " Id#" + String.valueOf(c.getCodCliente()));
         }
         
-        */
 
         JButton btnSave = new JButton("SAVE");
         btnSave.addActionListener(new ActionListener() {
@@ -139,6 +140,8 @@ public class StayInsertForm extends JFrame {
                 } catch (StringIndexOutOfBoundsException ex) {
                     JOptionPane.showMessageDialog(null, "Input format is incorrect. Make sure the item contains '#' followed by a number.", "Input Error", JOptionPane.ERROR_MESSAGE);
                     return;
+                }catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(null, "Please select an item from the list.", "Selection Error", JOptionPane.ERROR_MESSAGE);
                 }
                 
                 try {
@@ -153,6 +156,8 @@ public class StayInsertForm extends JFrame {
                 } catch (StringIndexOutOfBoundsException ex) {
                     JOptionPane.showMessageDialog(null, "Input format is incorrect. Make sure the item contains '#' followed by a number.", "Input Error", JOptionPane.ERROR_MESSAGE);
                     return;
+                }catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(null, "Please select an item from the list.", "Selection Error", JOptionPane.ERROR_MESSAGE);
                 }
 
 
@@ -169,10 +174,16 @@ public class StayInsertForm extends JFrame {
                     valorFinal
                 );
 
-                // HospedagemController hc = new HospedagemController();
+                HospedagemController hc = new HospedagemController();
 
-                JOptionPane.showMessageDialog(null, "Log.", "hc.insert(stay)", JOptionPane.INFORMATION_MESSAGE);
-                StayInsertForm.this.dispose();
+                try {
+                    hc.inserir(stay); 
+                    JOptionPane.showMessageDialog(null, "Hospedagem salva com sucesso!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+                    StayInsertForm.this.dispose(); 
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Erro ao salvar hospedagem: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
             }
         });
         btnSave.setForeground(Color.WHITE);

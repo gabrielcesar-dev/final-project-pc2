@@ -19,9 +19,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
+
+import br.com.main.controller.ChaleController;
+import br.com.main.controller.ClienteController;
+import br.com.main.controller.HospedagemController;
 import br.com.main.model.Chale;
 import br.com.main.model.Cliente;
 import br.com.main.model.Hospedagem;
+import br.com.main.view.client.ClientAlterForm;
 
 
 public class StayAlterForm extends JFrame {
@@ -60,20 +65,16 @@ public class StayAlterForm extends JFrame {
         cbxCodChale = new JComboBox<>();
         cbxCodCliente = new JComboBox<>();
 
-        /* Populate JComboBox with data
-        HospedagemController hc = new HospedagemController();
-        ClienteController cc = new ClienteController();
         ChaleController chc = new ChaleController();
+        ClienteController cc = new ClienteController();
 
         for (Chale c : chc.listarTodos()) {
             cbxCodChale.addItem(c.getLocalizacao() + " Id#" + String.valueOf(c.getCodChale()));
         }
 
         for (Cliente c : cc.listarTodos()) {
-            cbxCodCliente.addItem(c.getNomeCliente() + " Id#" + String.valueOf(c.getCodClient()));
+            cbxCodCliente.addItem( c.getNomeCliente() + " Id#" + String.valueOf(c.getCodCliente()));
         }
-        
-        */
 
         JButton btnAlter = new JButton("Alter");
         btnAlter.addActionListener(new ActionListener() {
@@ -125,6 +126,8 @@ public class StayAlterForm extends JFrame {
                 } catch (StringIndexOutOfBoundsException ex) {
                     JOptionPane.showMessageDialog(null, "Input format is incorrect. Make sure the item contains '#' followed by a number.", "Input Error", JOptionPane.ERROR_MESSAGE);
                     return;
+                }catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(null, "Please select an item from the list.", "Selection Error", JOptionPane.ERROR_MESSAGE);
                 }
 
                 try {
@@ -137,6 +140,8 @@ public class StayAlterForm extends JFrame {
                 } catch (StringIndexOutOfBoundsException ex) {
                     JOptionPane.showMessageDialog(null, "Input format is incorrect. Make sure the item contains '#' followed by a number.", "Input Error", JOptionPane.ERROR_MESSAGE);
                     return;
+                }catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(null, "Please select an item from the list.", "Selection Error", JOptionPane.ERROR_MESSAGE);
                 }
 
                 Hospedagem stay = new Hospedagem(
@@ -151,10 +156,15 @@ public class StayAlterForm extends JFrame {
                     valorFinal
                 );
 
-                // HospedagemController hc = new HospedagemController();
+                 HospedagemController hc = new HospedagemController();
 
-                JOptionPane.showMessageDialog(null, "Log.", "hc.alterar(stay)", JOptionPane.INFORMATION_MESSAGE);
-                StayAlterForm.this.dispose();
+                 try {
+ 					hc.alterar(stay); 
+ 		            JOptionPane.showMessageDialog(null, "Hospedagem alterado com sucesso", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+ 		            StayAlterForm.this.dispose(); 
+ 		        } catch (Exception ex) {
+ 		            JOptionPane.showMessageDialog(null, "Erro ao alterar a hospedagem: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+ 		        }
             }
         });
         btnAlter.setForeground(Color.WHITE);
@@ -192,9 +202,12 @@ public class StayAlterForm extends JFrame {
                     options,
                     options[1]
                 );
+                
+                HospedagemController hc = new HospedagemController();
 
                 if (JOptionPane.YES_OPTION == response) {
-                    JOptionPane.showMessageDialog(null, "Log", "hc.excluir()", JOptionPane.INFORMATION_MESSAGE);
+                	hc.excluir(stay);
+                	JOptionPane.showMessageDialog(null, "Hospedagem excluído com sucesso!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
                     StayAlterForm.this.dispose();
                 }
             }
