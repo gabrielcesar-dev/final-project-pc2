@@ -70,7 +70,6 @@ public class ClientAlterForm extends JFrame {
 		JButton btnAlter = new JButton("ALTER");
 		btnAlter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO: implement alter
 				
 				LocalDate nascimento = null;
 				Integer codCliente = 0;
@@ -100,12 +99,14 @@ public class ClientAlterForm extends JFrame {
 				    );
 
 				 ClienteController cc = new ClienteController();
-
-				// JOptionPane.showMessageDialog(null, "Log.", "cc.alterar(client)", JOptionPane.INFORMATION_MESSAGE);
-				cc.alterar(client);
-				JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-
-				ClientAlterForm.this.dispose();
+				
+				try {
+					cc.alterar(client); 
+		            JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+		            ClientAlterForm.this.dispose(); 
+		        } catch (Exception ex) {
+		            JOptionPane.showMessageDialog(null, "Erro ao alterar o cliente: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+		        }
 			}
 		});
 		btnAlter.setForeground(Color.WHITE);
@@ -125,12 +126,10 @@ public class ClientAlterForm extends JFrame {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO: delete action 
 				
 				Cliente client = new Cliente();
 
 				ClienteController cc = new ClienteController();
-			    
 
 				try {
 				    client.setCodCliente(Integer.parseInt(id));
@@ -154,7 +153,6 @@ public class ClientAlterForm extends JFrame {
 			    );
 			    
 			    if (JOptionPane.YES_OPTION == response) {
-			    	// JOptionPane.showMessageDialog(null, "Log", "cc.excluir()", JOptionPane.INFORMATION_MESSAGE);
 			    	cc.excluir(client);
 			    	JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 			    	ClientAlterForm.this.dispose();

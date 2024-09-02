@@ -188,7 +188,7 @@ public class ClientMain extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 		
-        Timer timer = new Timer(5000, new ActionListener() {
+        Timer timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Util.fetchClient(tblUsers); 

@@ -70,7 +70,6 @@ public class ClientInsertForm extends JFrame {
 		JButton btnSave = new JButton("SAVE");
 		btnSave.addActionListener(new ActionListener() {
 			public	 void actionPerformed(ActionEvent e) {
-				// TODO: implement save action
 				
 				LocalDate nascimento = null;
 
@@ -96,16 +95,13 @@ public class ClientInsertForm extends JFrame {
 
 				 ClienteController cc = new ClienteController();
 
-				/*JOptionPane.showMessageDialog(null, "Log.", "cc.inserir(client)", JOptionPane.INFORMATION_MESSAGE);
-				ClientInsertForm.this.dispose();*/
 				 try {
-			            cc.inserir(client); // Chama o método de inserção do controlador
-			            JOptionPane.showMessageDialog(null, "Cliente salvo com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-			            ClientInsertForm.this.dispose(); // Fecha o formulário após salvar
+			            cc.inserir(client); 
+			            JOptionPane.showMessageDialog(null, "Cliente salvo com sucesso!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+			            ClientInsertForm.this.dispose(); 
 			        } catch (Exception ex) {
-			            JOptionPane.showMessageDialog(null, "Erro ao salvar cliente: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+			            JOptionPane.showMessageDialog(null, "Erro ao salvar cliente: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			        }
-			
 			}
 		});
 		btnSave.setForeground(Color.WHITE);
