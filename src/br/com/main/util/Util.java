@@ -7,18 +7,20 @@ import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import br.com.main.controller.ClienteController;
+import br.com.main.controller.HospedagemController;
 import br.com.main.model.Cliente;
 import br.com.main.model.Hospedagem;
 
 public class Util {
-	public static void fetchClient(JTable tblClients) {
+	/*public static void fetchClient(JTable tblClients) {
 		// TODO: fetch data
 		
 		List<Cliente> clients = new ArrayList<>();
 		
-		// ClienteController cc = new ClienteController();
+		ClienteController cc = new ClienteController();
 		
-		//clients = cc.listAll();
+		clients = cc.listarTodos();
 		
 		DefaultTableModel tbl = (DefaultTableModel) tblClients.getModel();
 		for (int i = tbl.getRowCount() - 1; i >= 0; i--) {
@@ -39,6 +41,35 @@ public class Util {
             
 			row++;
 		}
+	}*/
+	
+	// gxpytz mode
+	public static void fetchClient(JTable tblClients) {
+	    List<Cliente> clients = new ArrayList<>();
+	    
+	    ClienteController cc = new ClienteController();
+	    clients = cc.listarTodos();
+	    
+	    DefaultTableModel tbl = (DefaultTableModel) tblClients.getModel();
+	    
+	    // Remove todas as linhas existentes na tabela
+	    tbl.setRowCount(0);
+
+	    // Adiciona os clientes na tabela
+	    for (Cliente client : clients) {
+	        Object[] rowData = {
+	            client.getCodCliente(),
+	            client.getNomeCliente(),
+	            client.getRgCliente(),
+	            client.getEnderecoCliente(),
+	            client.getBairroCliente(),
+	            client.getCidadeCliente(),
+	            client.getEstadoCliente(),
+	            client.getCepCliente(),
+	            client.getNascimentoCliente().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+	        };
+	        tbl.addRow(rowData);  // Adiciona uma nova linha à tabela
+	    }
 	}
 
     public static void fetchStay(JTable tblStays) {
@@ -46,8 +77,8 @@ public class Util {
         
         List<Hospedagem> stays = new ArrayList<>();
         
-        // HospedagemController hc = new HospedagemController();
-        // stays = hc.listAll();
+        HospedagemController hc = new HospedagemController();
+        stays = hc.listarTodos();
         
         DefaultTableModel tbl = (DefaultTableModel) tblStays.getModel();
         for (int i = tbl.getRowCount() - 1; i >= 0; i--) {

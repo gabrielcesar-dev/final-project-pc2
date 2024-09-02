@@ -23,6 +23,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
+import br.com.main.controller.ClienteController;
 import br.com.main.model.Cliente;
 
 public class ClientAlterForm extends JFrame {
@@ -98,9 +99,12 @@ public class ClientAlterForm extends JFrame {
 				        nascimento
 				    );
 
-				 // ClienteController cc = new ClienteController();
+				 ClienteController cc = new ClienteController();
 
-				JOptionPane.showMessageDialog(null, "Log.", "cc.alterar(client)", JOptionPane.INFORMATION_MESSAGE);
+				// JOptionPane.showMessageDialog(null, "Log.", "cc.alterar(client)", JOptionPane.INFORMATION_MESSAGE);
+				cc.alterar(client);
+				JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
 				ClientAlterForm.this.dispose();
 			}
 		});
@@ -125,7 +129,7 @@ public class ClientAlterForm extends JFrame {
 				
 				Cliente client = new Cliente();
 
-				//ClienteController cc = new ClienteController();
+				ClienteController cc = new ClienteController();
 			    
 
 				try {
@@ -150,7 +154,9 @@ public class ClientAlterForm extends JFrame {
 			    );
 			    
 			    if (JOptionPane.YES_OPTION == response) {
-			    	JOptionPane.showMessageDialog(null, "Log", "cc.excluir()", JOptionPane.INFORMATION_MESSAGE);
+			    	// JOptionPane.showMessageDialog(null, "Log", "cc.excluir()", JOptionPane.INFORMATION_MESSAGE);
+			    	cc.excluir(client);
+			    	JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 			    	ClientAlterForm.this.dispose();
 			    }
 			}

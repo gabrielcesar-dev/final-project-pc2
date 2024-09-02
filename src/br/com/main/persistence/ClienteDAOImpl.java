@@ -43,7 +43,7 @@ public class ClienteDAOImpl implements ClienteDAO {
     @Override
     public String alterar(Cliente cliente) {
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE cliente SET rgCliente=?, enderecoCliente=?, bairroCliente=?, cidadeCliente=?, estadoCliente=?, cepCliente=?, nascimentoCliente=? WHERE nomeCliente=?");
+        sql.append("UPDATE cliente SET rgCliente=?, enderecoCliente=?, bairroCliente=?, cidadeCliente=?, estadoCliente=?, cepCliente=?, nascimentoCliente=?, nomeCliente=? WHERE codCliente=?");
         Connection con = ConnectionFactory.getConnection();
         try {
             PreparedStatement pst = con.prepareStatement(sql.toString());
@@ -55,6 +55,8 @@ public class ClienteDAOImpl implements ClienteDAO {
             pst.setString(6, cliente.getCepCliente());
             pst.setObject(7, cliente.getNascimentoCliente());
             pst.setString(8, cliente.getNomeCliente());
+            pst.setInt(9, cliente.getCodCliente());
+            
             int res = pst.executeUpdate();
             if (res > 0) {
                 return "Alterado com sucesso.";
