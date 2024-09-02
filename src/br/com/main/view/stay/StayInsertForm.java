@@ -63,14 +63,13 @@ public class StayInsertForm extends JFrame {
      */
     public StayInsertForm() {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 450, 400);
+        setBounds(100, 100, 450, 400); // Adjusted size to be similar to ClientInsertForm
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
 
         cbxCodChale = new JComboBox<>();
         cbxCodCliente = new JComboBox<>();
-
         
         ChaleController chc = new ChaleController();
         ClienteController cc = new ClienteController();
@@ -80,9 +79,8 @@ public class StayInsertForm extends JFrame {
         }
 
         for (Cliente c : cc.listarTodos()) {
-            cbxCodCliente.addItem( c.getNomeCliente() + " Id#" + String.valueOf(c.getCodCliente()));
+            cbxCodCliente.addItem(c.getNomeCliente() + " Id#" + String.valueOf(c.getCodCliente()));
         }
-        
 
         JButton btnSave = new JButton("SAVE");
         btnSave.addActionListener(new ActionListener() {
@@ -148,7 +146,7 @@ public class StayInsertForm extends JFrame {
                     String codClienteStr = cbxCodCliente.getSelectedItem().toString(); 
                     String numberStr = codClienteStr.substring(codClienteStr.lastIndexOf("#") + 1); 
                     codCliente = Integer.parseInt(numberStr);
-                    
+  
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Invalid input for 'Cod Cliente'. Please enter a valid number.", "Input Error", JOptionPane.ERROR_MESSAGE);
                     return;
@@ -198,8 +196,6 @@ public class StayInsertForm extends JFrame {
         btnCancel.setForeground(Color.WHITE);
         btnCancel.setBackground(new Color(255, 0, 51));
 
-        JPanel panel = new JPanel();
-
         JLabel lblCodChale = new JLabel("Código Chale:");
         JLabel lblCodCliente = new JLabel("Código Cliente:");
         JLabel lblEstado = new JLabel("Estado:");
@@ -227,91 +223,78 @@ public class StayInsertForm extends JFrame {
         textFieldValorFinal = new JTextField();
         textFieldValorFinal.setColumns(10);
 
-        GroupLayout gl_panel = new GroupLayout(panel);
+        GroupLayout gl_panel = new GroupLayout(contentPane);
         gl_panel.setHorizontalGroup(
-            gl_panel.createParallelGroup(Alignment.LEADING)
-                .addGroup(gl_panel.createSequentialGroup()
-                    .addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-                        .addComponent(lblCodChale)
-                        .addComponent(lblCodCliente)
-                        .addComponent(lblEstado)
-                        .addComponent(lblDataInicio)
-                        .addComponent(lblDataFim)
-                        .addComponent(lblQtdPessoas)
-                        .addComponent(lblDesconto)
-                        .addComponent(lblValorFinal))
-                    .addPreferredGap(ComponentPlacement.UNRELATED)
-                    .addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-                        .addComponent(cbxCodChale, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(cbxCodCliente, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(textFieldEstado, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(textFieldDataInicio, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(textFieldDataFim, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(textFieldQtdPessoas, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(textFieldDesconto, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(textFieldValorFinal, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
+        	gl_panel.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(gl_panel.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+        				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+        					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+        						.addComponent(lblCodChale)
+        						.addComponent(lblCodCliente)
+        						.addComponent(lblEstado)
+        						.addComponent(lblDataInicio)
+        						.addComponent(lblDataFim)
+        						.addComponent(lblQtdPessoas)
+        						.addComponent(lblDesconto)
+        						.addComponent(lblValorFinal))
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+        						.addComponent(cbxCodChale, 0, 248, Short.MAX_VALUE)
+        						.addComponent(cbxCodCliente, 0, 248, Short.MAX_VALUE)
+        						.addComponent(textFieldEstado, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+        						.addComponent(textFieldDataInicio, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+        						.addComponent(textFieldDataFim, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+        						.addComponent(textFieldQtdPessoas, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+        						.addComponent(textFieldDesconto, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+        						.addComponent(textFieldValorFinal, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)))
+        				.addGroup(gl_panel.createSequentialGroup()
+        					.addComponent(btnCancel)
+        					.addPreferredGap(ComponentPlacement.RELATED)
+        					.addComponent(btnSave)))
+        			.addContainerGap())
         );
         gl_panel.setVerticalGroup(
-            gl_panel.createParallelGroup(Alignment.LEADING)
-                .addGroup(gl_panel.createSequentialGroup()
-                    .addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-                        .addComponent(lblCodChale)
-                        .addComponent(cbxCodChale, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(ComponentPlacement.RELATED)
-                    .addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-                        .addComponent(lblCodCliente)
-                        .addComponent(cbxCodCliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(ComponentPlacement.RELATED)
-                    .addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-                        .addComponent(lblEstado)
-                        .addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(ComponentPlacement.RELATED)
-                    .addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-                        .addComponent(lblDataInicio)
-                        .addComponent(textFieldDataInicio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(ComponentPlacement.RELATED)
-                    .addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-                        .addComponent(lblDataFim)
-                        .addComponent(textFieldDataFim, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(ComponentPlacement.RELATED)
-                    .addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-                        .addComponent(lblQtdPessoas)
-                        .addComponent(textFieldQtdPessoas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(ComponentPlacement.RELATED)
-                    .addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-                        .addComponent(lblDesconto)
-                        .addComponent(textFieldDesconto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(ComponentPlacement.RELATED)
-                    .addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-                        .addComponent(lblValorFinal)
-                        .addComponent(textFieldValorFinal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+        	gl_panel.createParallelGroup(Alignment.LEADING)
+        		.addGroup(gl_panel.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblCodChale)
+        				.addComponent(cbxCodChale, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblCodCliente)
+        				.addComponent(cbxCodCliente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblEstado)
+        				.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblDataInicio)
+        				.addComponent(textFieldDataInicio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblDataFim)
+        				.addComponent(textFieldDataFim, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblQtdPessoas)
+        				.addComponent(textFieldQtdPessoas, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblDesconto)
+        				.addComponent(textFieldDesconto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(lblValorFinal)
+        				.addComponent(textFieldValorFinal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        			.addPreferredGap(ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(btnSave)
+        				.addComponent(btnCancel)))
         );
-        panel.setLayout(gl_panel);
-        
-        GroupLayout gl_contentPane = new GroupLayout(contentPane);
-        gl_contentPane.setHorizontalGroup(
-            gl_contentPane.createParallelGroup(Alignment.LEADING)
-                .addGroup(gl_contentPane.createSequentialGroup()
-                    .addGap(10)
-                    .addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-                        .addComponent(panel, GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
-                        .addGroup(gl_contentPane.createSequentialGroup()
-                            .addComponent(btnSave, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(ComponentPlacement.RELATED)
-                            .addComponent(btnCancel, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)))
-                    .addGap(10))
-        );
-        gl_contentPane.setVerticalGroup(
-            gl_contentPane.createParallelGroup(Alignment.LEADING)
-                .addGroup(gl_contentPane.createSequentialGroup()
-                    .addGap(10)
-                    .addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(ComponentPlacement.RELATED)
-                    .addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-                        .addComponent(btnSave)
-                        .addComponent(btnCancel))
-                    .addGap(10))
-        );
-        contentPane.setLayout(gl_contentPane);
+        contentPane.setLayout(gl_panel);
     }
 }
