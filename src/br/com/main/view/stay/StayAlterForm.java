@@ -176,7 +176,7 @@ public class StayAlterForm extends JFrame {
         btnSave.setForeground(Color.WHITE);
         btnSave.setBackground(new Color(0, 0, 255));
 
-        JButton btnCancel = new JButton("Cancel");
+        JButton btnCancel = new JButton("cancel");
         btnCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 StayAlterForm.this.dispose();
