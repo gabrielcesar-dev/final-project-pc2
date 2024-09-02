@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -12,6 +13,7 @@ import java.time.format.DateTimeParseException;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -19,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 
 import br.com.main.model.Cliente;
 
@@ -33,7 +36,7 @@ public class ClientAlterForm extends JFrame {
 	private JTextField textFieldCidade;
 	private JTextField textFieldEstado;
 	private JTextField textFieldCep;
-	private JTextField textFieldNascimento;
+	private JFormattedTextField textFieldNascimento;
 
 	/**
 	 * Launch the application.
@@ -69,11 +72,11 @@ public class ClientAlterForm extends JFrame {
 				// TODO: implement alter
 				
 				LocalDate nascimento = null;
-				Integer codClient = null;
+				Integer codCliente = 0;
 
 				try {
 				    nascimento = LocalDate.parse(textFieldNascimento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-				    codClient = Integer.parseInt(id);
+				    codCliente = Integer.parseInt(id);
 
 				} catch (DateTimeParseException ex) {
 				    JOptionPane.showMessageDialog(null, "Invalid date format. Please enter the date in dd/MM/yyyy format.", "Input Error", JOptionPane.ERROR_MESSAGE);
@@ -84,7 +87,7 @@ public class ClientAlterForm extends JFrame {
 				}
 				
 				Cliente client = new Cliente(
-				        codClient,
+				        codCliente,
 				        textFieldNome.getText(),
 				        textFieldRg.getText(),
 				        textFieldEndereco.getText(),
@@ -98,6 +101,7 @@ public class ClientAlterForm extends JFrame {
 				 // ClienteController cc = new ClienteController();
 
 				JOptionPane.showMessageDialog(null, "Log.", "cc.alterar(client)", JOptionPane.INFORMATION_MESSAGE);
+				ClientAlterForm.this.dispose();
 			}
 		});
 		btnAlter.setForeground(Color.WHITE);
@@ -108,7 +112,7 @@ public class ClientAlterForm extends JFrame {
 		JButton btnCancel = new JButton("cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				ClientAlterForm.this.dispose();
 			}
 		});
 		btnCancel.setForeground(Color.WHITE);
@@ -125,7 +129,7 @@ public class ClientAlterForm extends JFrame {
 			    
 
 				try {
-				    client.setCodClient(Integer.parseInt(id));
+				    client.setCodCliente(Integer.parseInt(id));
 
 				} catch (NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Invalid ID", "Error", JOptionPane.ERROR_MESSAGE);
@@ -147,7 +151,7 @@ public class ClientAlterForm extends JFrame {
 			    
 			    if (JOptionPane.YES_OPTION == response) {
 			    	JOptionPane.showMessageDialog(null, "Log", "cc.excluir()", JOptionPane.INFORMATION_MESSAGE);
-			    	System.exit(0);
+			    	ClientAlterForm.this.dispose();
 			    }
 			}
 		});
@@ -215,7 +219,12 @@ public class ClientAlterForm extends JFrame {
 	    textFieldCep.setColumns(10);
 	    textFieldCep.setText(cep);
 	    
-	    textFieldNascimento = new JTextField();
+		try {
+			textFieldNascimento = new JFormattedTextField(new MaskFormatter("##/##/####"));
+		} catch (ParseException e) {
+			System.err.println("Error creating date formatter: " + e.getMessage());
+		}
+		
 	    textFieldNascimento.setColumns(10);
 	    textFieldNascimento.setText(nascimento);
 	    
