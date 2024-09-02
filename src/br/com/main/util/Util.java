@@ -7,8 +7,10 @@ import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import br.com.main.controller.ChaleController;
 import br.com.main.controller.ClienteController;
 import br.com.main.controller.HospedagemController;
+import br.com.main.model.Chale;
 import br.com.main.model.Cliente;
 import br.com.main.model.Hospedagem;
 
@@ -39,32 +41,53 @@ public class Util {
 	    }
 	}
 
-    public static void fetchStay(JTable tblStays) {
-        // TODO: fetch data
+	public static void fetchStay(JTable tblStays) {
+	    List<Hospedagem> stays = new ArrayList<>();
+	    
+	    HospedagemController hc = new HospedagemController();
+	    stays = hc.listarTodos();
+	    
+	    DefaultTableModel tbl = (DefaultTableModel) tblStays.getModel();
+	    
+	    tbl.setRowCount(0);
+	    
+	    for (Hospedagem stay : stays) {
+	        Object[] rowData = {
+	            stay.getCodHospedagem(),
+	            stay.getCodChale(),
+	            stay.getCodCliente(),
+	            stay.getEstado(),
+	            stay.getDataInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+	            stay.getDataFim().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+	            stay.getQtdPessoas(),
+	            stay.getDesconto(),
+	            stay.getValorFinal()
+	        };
+	        tbl.addRow(rowData);
+	    }
+	}
+
+
+    public static void fetchChalet(JTable tblChalets) {
+        List<Chale> chales = new ArrayList<>();
         
-        List<Hospedagem> stays = new ArrayList<>();
+        ChaleController cc = new ChaleController();
+        chales = cc.listarTodos();
         
-        HospedagemController hc = new HospedagemController();
-        stays = hc.listarTodos();
+        DefaultTableModel tbl = (DefaultTableModel) tblChalets.getModel();
         
-        DefaultTableModel tbl = (DefaultTableModel) tblStays.getModel();
-        for (int i = tbl.getRowCount() - 1; i >= 0; i--) {
-            tbl.removeRow(i);
+        tbl.setRowCount(0);
+
+        for (Chale chalet : chales) {
+            Object[] rowData = {
+                chalet.getCodChale(),
+                chalet.getLocalizacao(),
+                chalet.getCapacidade(),
+                chalet.getValorAltaEstacao(),
+                chalet.getValorBaixaEstacao()
+            };
+            tbl.addRow(rowData);
         }
-        
-        int row = 0;
-        for (Hospedagem stay : stays) {
-            tbl.setValueAt(stay.getCodHospedagem(), row, 0);
-            tbl.setValueAt(stay.getCodChale(), row, 1);
-            tbl.setValueAt(stay.getCodCliente(), row, 2);
-            tbl.setValueAt(stay.getEstado(), row, 3);
-            tbl.setValueAt(stay.getDataInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), row, 4);
-            tbl.setValueAt(stay.getDataFim().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), row, 5);
-            tbl.setValueAt(stay.getQtdPessoas(), row, 6);
-            tbl.setValueAt(stay.getDesconto(), row, 7);
-            tbl.setValueAt(stay.getValorFinal(), row, 8);
-            
-            row++;
-        }       
     }
+
 }
