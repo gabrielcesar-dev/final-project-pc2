@@ -95,6 +95,12 @@ public class ClientInsertForm extends JFrame {
 
 				 ClienteController cc = new ClienteController();
 
+<<<<<<< HEAD
+=======
+				/*JOptionPane.showMessageDialog(null, "Log.", "cc.inserir(client)", JOptionPane.INFORMATION_MESSAGE);
+				ClientInsertForm.this.dispose();*/
+				 
+>>>>>>> f07865a736d590c8d6bbe773042cf100acd5e08b
 				 try {
 			            cc.inserir(client); 
 			            JOptionPane.showMessageDialog(null, "Cliente salvo com sucesso!", "Sucess", JOptionPane.INFORMATION_MESSAGE);

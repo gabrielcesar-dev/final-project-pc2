@@ -73,12 +73,12 @@ public class ClienteDAOImpl implements ClienteDAO {
     @Override
     public String excluir(Cliente cliente) {
         StringBuilder sql = new StringBuilder();
-        sql.append("DELETE FROM cliente WHERE nomeCliente=? AND rgCliente=?");
+        sql.append("DELETE FROM cliente WHERE codCliente=?");
         Connection con = ConnectionFactory.getConnection();
         try {
             PreparedStatement pst = con.prepareStatement(sql.toString());
-            pst.setString(1, cliente.getNomeCliente());
-            pst.setString(2, cliente.getRgCliente());
+            pst.setInt(1, cliente.getCodCliente());
+            
             int res = pst.executeUpdate();
             if (res > 0) {
                 return "Excluído com sucesso.";

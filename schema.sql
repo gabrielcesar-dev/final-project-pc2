@@ -30,8 +30,10 @@ CREATE TABLE IF NOT EXISTS hospedagem (
   valorFinal  DECIMAL(10, 2) ,
   CONSTRAINT fk_chale 
     FOREIGN KEY (codChale)
-    REFERENCES public.chale (codChale),
+    REFERENCES public.chale (codChale)
+    ON DELETE CASCADE,
   CONSTRAINT fk_cliente 
     FOREIGN KEY (codCliente)
     REFERENCES public.cliente (codCliente)
+    ON DELETE CASCADE
 );
