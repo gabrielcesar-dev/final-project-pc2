@@ -96,9 +96,16 @@ public class ClientInsertForm extends JFrame {
 
 				 ClienteController cc = new ClienteController();
 
-				JOptionPane.showMessageDialog(null, "Log.", cc.inserir(client), JOptionPane.INFORMATION_MESSAGE);
-				ClientInsertForm.this.dispose();
+				/*JOptionPane.showMessageDialog(null, "Log.", "cc.inserir(client)", JOptionPane.INFORMATION_MESSAGE);
+				ClientInsertForm.this.dispose();*/
 				 
+				 try {
+			            cc.inserir(client); // Chama o método de inserção do controlador
+			            JOptionPane.showMessageDialog(null, "Cliente salvo com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+			            ClientInsertForm.this.dispose(); // Fecha o formulário após salvar
+			        } catch (Exception ex) {
+			            JOptionPane.showMessageDialog(null, "Erro ao salvar cliente: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+			        }
 			
 			}
 		});

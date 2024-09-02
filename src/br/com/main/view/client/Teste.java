@@ -19,17 +19,10 @@ public class Teste {
 		}
 		Cliente cliente = new Cliente();
 		cliente.setCodCliente(1);
-        cliente.setNomeCliente("João Silva");
-        cliente.setRgCliente("123456789");
-        cliente.setEnderecoCliente("Rua das Flores, 123");
-        cliente.setBairroCliente("Centro");
-        cliente.setCidadeCliente("Cidade Exemplo");
-        cliente.setEstadoCliente("SP");
-        cliente.setCepCliente("12345-678");
-        cliente.setNascimentoCliente(LocalDate.of(1980, 1, 1));
+        
         
         ClienteDAOImpl clienteDAO = new ClienteDAOImpl();
-        String resultado = clienteDAO.alterar(cliente);
+        String resultado = clienteDAO.excluir(cliente);
         System.out.println(resultado); 
 	}
 }
