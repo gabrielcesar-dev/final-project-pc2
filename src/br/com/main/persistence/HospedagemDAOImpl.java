@@ -5,12 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.main.model.Chale;
 import br.com.main.model.Hospedagem;
 
 public class HospedagemDAOImpl implements HospedagemDAO {
