@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import br.com.main.util.Util;
+import br.com.main.view.Main;
 import br.com.main.model.Chale;
 
 import java.awt.Font;
@@ -66,7 +67,10 @@ public class ChaletMain extends JFrame {
         mntmHome.setFont(new Font("Dialog", Font.BOLD, 12));
         mntmHome.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+				Main form = new Main();
+				form.setVisible(true);
+				form.setLocationRelativeTo(null);
+				ChaletMain.this.dispose();
             }
         });
         menuBar.add(mntmHome);

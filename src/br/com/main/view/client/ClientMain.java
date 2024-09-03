@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import br.com.main.util.Util;
+import br.com.main.view.Main;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -67,7 +68,10 @@ public class ClientMain extends JFrame {
 		mntmNewMenuItemHome.setFont(new Font("Dialog", Font.BOLD, 12));
 		mntmNewMenuItemHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				Main form = new Main();
+				form.setVisible(true);
+				form.setLocationRelativeTo(null);
+				ClientMain.this.dispose();
 			}
 		});
 		menuBar.add(mntmNewMenuItemHome);
