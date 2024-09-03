@@ -40,9 +40,6 @@ public class ClientInsertForm extends JFrame {
 	private JTextField textFieldCep;
 	private JFormattedTextField textFieldNascimento;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -56,9 +53,6 @@ public class ClientInsertForm extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public ClientInsertForm() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

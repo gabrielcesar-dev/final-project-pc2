@@ -28,9 +28,6 @@ public class ChaletAlterForm extends JFrame {
     private JTextField textFieldValorAltaEstacao;
     private JTextField textFieldValorBaixaEstacao;
 
-    /**
-     * Launch the application.
-     */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -44,9 +41,6 @@ public class ChaletAlterForm extends JFrame {
         });
     }
 
-    /**
-     * Create the frame.
-     */
     public ChaletAlterForm(String id, String localizacao, String capacidade, String valorAltaEstacao, String valorBaixaEstacao) {
     	setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -34,9 +34,6 @@ public class ChaletInsertForm extends JFrame {
     private JTextField textFieldValorAltaEstacao;
     private JTextField textFieldValorBaixaEstacao;
 
-    /**
-     * Launch the application.
-     */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -50,9 +47,6 @@ public class ChaletInsertForm extends JFrame {
         });
     }
 
-    /**
-     * Create the frame.
-     */
     public ChaletInsertForm() {
     	setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

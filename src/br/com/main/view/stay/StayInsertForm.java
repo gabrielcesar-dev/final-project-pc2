@@ -42,9 +42,6 @@ public class StayInsertForm extends JFrame {
     private JComboBox<String> cbxCodChale;
     private JComboBox<String> cbxCodCliente;
 
-    /**
-     * Launch the application.
-     */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -58,9 +55,6 @@ public class StayInsertForm extends JFrame {
         });
     }
 
-    /**
-     * Create the frame.
-     */
     public StayInsertForm() {
     	setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

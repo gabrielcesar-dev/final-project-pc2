@@ -42,9 +42,6 @@ public class StayAlterForm extends JFrame {
     private JComboBox<String> cbxCodChale;
     private JComboBox<String> cbxCodCliente;
 
-    /**
-     * Launch the application.
-     */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {

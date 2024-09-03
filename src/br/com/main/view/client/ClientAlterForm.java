@@ -39,9 +39,6 @@ public class ClientAlterForm extends JFrame {
 	private JTextField textFieldCep;
 	private JFormattedTextField textFieldNascimento;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -55,9 +52,6 @@ public class ClientAlterForm extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public ClientAlterForm(String id, String nome, String rg, String endereco, String bairro, String cidade, 
             String estado, String cep, String nascimento) {
 		setResizable(false);
