@@ -46,7 +46,7 @@ public class HospedagemDAOImpl implements HospedagemDAO {
     @Override
     public String alterar(Hospedagem hospedagem) {
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE hospedagem SET estado=?, dataInicio=?, dataFim=?, qtdPessoas=?, desconto=?, valorFinal=? WHERE codChale=? AND codCliente=?");
+        sql.append("UPDATE hospedagem SET estado=?, dataInicio=?, dataFim=?, qtdPessoas=?, desconto=?, valorFinal=?, codCliente=?, codChale=? WHERE codHospedagem=?");
         Connection con = ConnectionFactory.getConnection();
         try {
             PreparedStatement pst = con.prepareStatement(sql.toString());
@@ -56,8 +56,9 @@ public class HospedagemDAOImpl implements HospedagemDAO {
             pst.setInt(4, hospedagem.getQtdPessoas());
             pst.setDouble(5, hospedagem.getDesconto());
             pst.setDouble(6, hospedagem.getValorFinal());
-            pst.setInt(7, hospedagem.getCodChale());
-            pst.setInt(8, hospedagem.getCodCliente());
+            pst.setInt(7, hospedagem.getCodCliente());
+            pst.setInt(8, hospedagem.getCodChale());
+            pst.setInt(9, hospedagem.getCodHospedagem());
             int res = pst.executeUpdate();
             if (res > 0) {
                 return "Alterado com sucesso.";
@@ -74,12 +75,11 @@ public class HospedagemDAOImpl implements HospedagemDAO {
     @Override
     public String excluir(Hospedagem hospedagem) {
         StringBuilder sql = new StringBuilder();
-        sql.append("DELETE FROM hospedagem WHERE codChale=? AND codCliente=?");
+        sql.append("DELETE FROM hospedagem WHERE codHospedagem=?");
         Connection con = ConnectionFactory.getConnection();
         try {
             PreparedStatement pst = con.prepareStatement(sql.toString());
-            pst.setInt(1, hospedagem.getCodChale());
-            pst.setInt(2, hospedagem.getCodCliente());
+            pst.setInt(1, hospedagem.getCodHospedagem());
             int res = pst.executeUpdate();
             if (res > 0) {
                 return "Excluído com sucesso.";

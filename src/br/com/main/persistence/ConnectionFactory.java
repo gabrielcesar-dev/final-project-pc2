@@ -7,9 +7,9 @@ public class ConnectionFactory {
 	public static Connection getConnection() {
 		String driver = "org.postgresql.Driver";
 		
-		String user = "gabriel";
+		String user = "Giovanni";
 		
-		String password = "123";
+		String password = "";
 		
 		String url = "jdbc:postgresql://127.0.0.1:5432/gigachales";
 		
