@@ -48,6 +48,7 @@ public class ChaletAlterForm extends JFrame {
      * Create the frame.
      */
     public ChaletAlterForm(String id, String localizacao, String capacidade, String valorAltaEstacao, String valorBaixaEstacao) {
+    	setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 500, 296);
         contentPane = new JPanel();

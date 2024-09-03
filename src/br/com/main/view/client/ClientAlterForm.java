@@ -60,6 +60,7 @@ public class ClientAlterForm extends JFrame {
 	 */
 	public ClientAlterForm(String id, String nome, String rg, String endereco, String bairro, String cidade, 
             String estado, String cep, String nascimento) {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

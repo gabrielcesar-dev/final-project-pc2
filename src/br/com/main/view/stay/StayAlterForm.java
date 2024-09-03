@@ -49,7 +49,7 @@ public class StayAlterForm extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    StayAlterForm frame = new StayAlterForm("0", "", "", "", "", "", "");
+                    StayAlterForm frame = new StayAlterForm("0", "", "", "", "", "", "", "", "");
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -61,7 +61,8 @@ public class StayAlterForm extends JFrame {
     /**
      * Create the frame.
      */
-    public StayAlterForm(String id, String dataInicio, String dataFim, String qtdPessoas, String desconto, String valorFinal, String estado) {
+    public StayAlterForm(String id, String codChale, String codCliente, String dataInicio, String dataFim, String qtdPessoas, String desconto, String valorFinal, String estado) {
+    	setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 500, 398); 
         contentPane = new JPanel();
@@ -76,10 +77,16 @@ public class StayAlterForm extends JFrame {
 
         for (Chale c : chc.listarTodos()) {
             cbxCodChale.addItem(c.getLocalizacao() + " Id#" + String.valueOf(c.getCodChale()));
+            if (codChale.equals(String.valueOf(c.getCodChale()))) {
+            	cbxCodChale.setSelectedItem(c.getLocalizacao() + " Id#" + String.valueOf(c.getCodChale()));
+            }
         }
 
         for (Cliente c : cc.listarTodos()) {
             cbxCodCliente.addItem(c.getNomeCliente() + " Id#" + String.valueOf(c.getCodCliente()));
+            if (codCliente.equals(String.valueOf(c.getCodCliente()))) {
+            	cbxCodChale.setSelectedItem(c.getNomeCliente() + " Id#" + String.valueOf(c.getCodCliente()));
+            }
         }
 
         JButton btnSave = new JButton("ALTER");
@@ -201,16 +208,26 @@ public class StayAlterForm extends JFrame {
             System.err.println("Error creating date formatter: " + e.getMessage());
         }
         textFieldDataInicio.setColumns(10);
+        textFieldDataInicio.setText(dataInicio);
+        
         textFieldDataFim.setColumns(10);
+        textFieldDataFim.setText(dataFim);
 
         textFieldEstado = new JTextField();
         textFieldEstado.setColumns(10);
+        textFieldEstado.setText(estado);
+        
         textFieldQtdPessoas = new JTextField();
         textFieldQtdPessoas.setColumns(10);
+        textFieldQtdPessoas.setText(qtdPessoas);
+        
         textFieldDesconto = new JTextField();
         textFieldDesconto.setColumns(10);
+        textFieldDesconto.setText(desconto);
+        
         textFieldValorFinal = new JTextField();
         textFieldValorFinal.setColumns(10);
+        textFieldValorFinal.setText(valorFinal);
         
         JLabel lblId = new JLabel("Id#" + id);
         lblId.setForeground(new Color(0, 153, 255));

@@ -219,6 +219,7 @@ public class HospedagemDAOImpl implements HospedagemDAO {
             if (rs != null) {
                 while (rs.next()) {
                     Hospedagem hospedagem = new Hospedagem();
+                    hospedagem.setCodHospedagem(rs.getInt("codHospedagem"));
                     hospedagem.setCodChale(rs.getInt("codChale"));
                     hospedagem.setCodCliente(rs.getInt("codCliente"));
                     hospedagem.setEstado(rs.getString("estado"));

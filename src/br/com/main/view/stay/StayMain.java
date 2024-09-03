@@ -127,9 +127,9 @@ public class StayMain extends JFrame {
                     String desconto = tblStays.getValueAt(row, 7).toString();
                     String valorFinal = tblStays.getValueAt(row, 8).toString();
 
-                    //StayAlterForm form = new StayAlterForm(codHospedagem, codChale, codCliente, estado, dataInicio, dataFim, qtdPessoas, desconto, valorFinal);
-                    //form.setVisible(true);
-                    //form.setLocationRelativeTo(null);
+                    StayAlterForm form = new StayAlterForm(codHospedagem, codChale, codCliente, dataInicio, dataFim, qtdPessoas, desconto, valorFinal, estado);
+                    form.setVisible(true);
+                    form.setLocationRelativeTo(null);
                 }
             }
         });

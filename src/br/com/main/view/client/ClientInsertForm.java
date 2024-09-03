@@ -60,6 +60,7 @@ public class ClientInsertForm extends JFrame {
 	 * Create the frame.
 	 */
 	public ClientInsertForm() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

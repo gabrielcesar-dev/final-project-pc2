@@ -62,8 +62,9 @@ public class StayInsertForm extends JFrame {
      * Create the frame.
      */
     public StayInsertForm() {
+    	setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setBounds(100, 100, 450, 400); // Adjusted size to be similar to ClientInsertForm
+        setBounds(100, 100, 450, 400); 
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
