@@ -117,15 +117,15 @@ public class ChaletMain extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 int row = tblChalets.getSelectedRow();
                 if (row != -1) {
-                    Integer codChale = Integer.parseInt(tblChalets.getValueAt(row, 0).toString());
+                    String codChale = tblChalets.getValueAt(row, 0).toString();
                     String localizacao = tblChalets.getValueAt(row, 1).toString();
-                    Integer capacidade = Integer.parseInt(tblChalets.getValueAt(row, 2).toString());
-                    Double valorAltaEstacao = Double.parseDouble(tblChalets.getValueAt(row, 3).toString());
-                    Double valorBaixaEstacao = Double.parseDouble(tblChalets.getValueAt(row, 4).toString());
+                    String capacidade = tblChalets.getValueAt(row, 2).toString();
+                    String valorAltaEstacao = tblChalets.getValueAt(row, 3).toString();
+                    String valorBaixaEstacao = tblChalets.getValueAt(row, 4).toString();
 
-                    //ChaletAlterForm form = new ChaletAlterForm(codChale, localizacao, capacidade, valorAltaEstacao, valorBaixaEstacao);
-                    //form.setVisible(true);
-                    //form.setLocationRelativeTo(null);
+                    ChaletAlterForm form = new ChaletAlterForm(codChale, localizacao, capacidade, valorAltaEstacao, valorBaixaEstacao);
+                    form.setVisible(true);
+                    form.setLocationRelativeTo(null);
                 }
             }
         });

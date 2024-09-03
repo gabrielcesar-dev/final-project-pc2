@@ -35,7 +35,7 @@ public class ChaletAlterForm extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    ChaletAlterForm frame = new ChaletAlterForm("0", "", 0, 0.0, 0.0);
+                    ChaletAlterForm frame = new ChaletAlterForm("0", "", "", "", "");
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -47,7 +47,7 @@ public class ChaletAlterForm extends JFrame {
     /**
      * Create the frame.
      */
-    public ChaletAlterForm(String id, String localizacao, int capacidade, double valorAltaEstacao, double valorBaixaEstacao) {
+    public ChaletAlterForm(String id, String localizacao, String capacidade, String valorAltaEstacao, String valorBaixaEstacao) {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 500, 296);
         contentPane = new JPanel();
@@ -60,12 +60,13 @@ public class ChaletAlterForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Chale chalet = null;
                 try {
+                	Integer codChale = Integer.parseInt(id);
                     String localizacao = textFieldLocalizacao.getText();
                     Integer capacidade = Integer.parseInt(textFieldCapacidade.getText());
                     Double valorAltaEstacao = Double.parseDouble(textFieldValorAltaEstacao.getText());
                     Double valorBaixaEstacao = Double.parseDouble(textFieldValorBaixaEstacao.getText());
 
-                    chalet = new Chale(0, localizacao, capacidade, valorAltaEstacao, valorBaixaEstacao);
+                    chalet = new Chale(codChale, localizacao, capacidade, valorAltaEstacao, valorBaixaEstacao);
 
                     ChaleController cc = new ChaleController();
                     cc.alterar(chalet);
@@ -139,15 +140,15 @@ public class ChaletAlterForm extends JFrame {
 
         textFieldCapacidade = new JTextField();
         textFieldCapacidade.setColumns(10);
-        textFieldCapacidade.setText(String.valueOf(capacidade));
+        textFieldCapacidade.setText(capacidade);
 
         textFieldValorAltaEstacao = new JTextField();
         textFieldValorAltaEstacao.setColumns(10);
-        textFieldValorAltaEstacao.setText(String.valueOf(valorAltaEstacao));
+        textFieldValorAltaEstacao.setText(valorAltaEstacao);
 
         textFieldValorBaixaEstacao = new JTextField();
         textFieldValorBaixaEstacao.setColumns(10);
-        textFieldValorBaixaEstacao.setText(String.valueOf(valorBaixaEstacao));
+        textFieldValorBaixaEstacao.setText(valorBaixaEstacao);
 
         GroupLayout gl_contentPane = new GroupLayout(contentPane);
         gl_contentPane.setHorizontalGroup(

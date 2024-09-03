@@ -163,7 +163,7 @@ public class StayInsertForm extends JFrame {
                 Hospedagem stay = new Hospedagem(
                 	0,
                     codChale,
-                    Integer.parseInt(cbxCodCliente.getSelectedItem().toString()),
+                    codCliente,
                     textFieldEstado.getText(),
                     dataInicio,
                     dataFim,
