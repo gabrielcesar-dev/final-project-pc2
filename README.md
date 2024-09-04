@@ -4,7 +4,7 @@
 
 Este projeto tem como objetivo a criação de uma aplicação Java Desktop completa para o cadastro de dados das tabelas **Cliente**, **Hospedagem**, e **Chale**, conforme o modelo conceitual fornecido. A aplicação deve permitir a entrada de dados por meio de formulários, facilitando o gerenciamento das informações.
 
-## Requisitos
+## Informações Gerais
 
 - **Disciplina:** Programação de Computadores 2
 - **Autores:** Giovanni Lucas Oliveira da Silva e Gabriel Cesar Silvino Xavier
@@ -14,7 +14,7 @@ Este projeto tem como objetivo a criação de uma aplicação Java Desktop compl
 Para que esta aplicação funcione corretamente, é necessário:
 
 1. **Criar o banco de dados `gigachales`**:
-   - Use o PostgreSQL para criar o banco de dados e as tabelas necessárias conforme o modelo conceitual.
+   - Use o PostgreSQL para criar o banco de dados e as tabelas necessárias conforme o schema fornecido no arquivo `schema.sql`.
 
 2. **Configurar a `FactoryConnection`**:
    - A `FactoryConnection` deve ser configurada para conectar-se ao banco de dados `gigachales`.
