@@ -26,7 +26,7 @@ Para que esta aplicação funcione corretamente, é necessário:
    - Faça o clone deste repositório em seu ambiente local.
 
 2. **Compile e Execute**:
-   - Compile a aplicação usando o Eclipse ou outro IDE de sua preferência.
+   - Compile a aplicação usando o Eclipse ou outro IDE de sua preferência, adicionando o arquivo `postgresql-42.2.23.jar` ao Build Path se necessário.
    - Execute a aplicação 'main' e use os formulários para cadastrar e gerenciar os dados das tabelas.
 
 3. **Banco de Dados**:
