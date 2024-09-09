@@ -41,7 +41,7 @@ public class Main extends JFrame {
             }
 
             {
-                URL imageUrl = getClass().getResource("/br/com/main/resources/images/image.png");
+                URL imageUrl = getClass().getResource("/br/com/main/resources/images/logo.png");
                 if (imageUrl != null) {
                     logo = Toolkit.getDefaultToolkit().getImage(imageUrl);
                 } else {

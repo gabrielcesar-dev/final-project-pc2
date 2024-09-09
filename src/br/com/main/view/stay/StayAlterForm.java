@@ -104,6 +104,11 @@ public class StayAlterForm extends JFrame {
                       JOptionPane.showMessageDialog(null, "Invalid date format. Please enter the date in dd/MM/yyyy format.", "Input Error", JOptionPane.ERROR_MESSAGE);
                       return;
                   }
+                  
+                  if (!dataFim.isAfter(dataInicio)) {
+                      JOptionPane.showMessageDialog(null, "Check-out date must be after check-in date.", "Date Error", JOptionPane.ERROR_MESSAGE);
+                      return;
+                  }
 
                   try {
                       qtdPessoas = Integer.parseInt(textFieldQtdPessoas.getText());

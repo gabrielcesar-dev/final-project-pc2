@@ -7,7 +7,7 @@ public class ConnectionFactory {
 	public static Connection getConnection() {
 		String driver = "org.postgresql.Driver";
 		
-		String user = "Giovanni";
+		String user = "";
 		
 		String password = "";
 		

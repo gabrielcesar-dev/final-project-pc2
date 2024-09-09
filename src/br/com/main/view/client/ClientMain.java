@@ -28,6 +28,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JMenuItem;
 import javax.swing.JMenuBar;
 import javax.swing.border.LineBorder;
+import java.awt.event.MouseMotionAdapter;
 
 public class ClientMain extends JFrame {
 
@@ -116,6 +117,19 @@ public class ClientMain extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		
 		tblUsers = new JTable();
+		tblUsers.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				 int row = tblUsers.rowAtPoint(e.getPoint());
+			        if (row > -1) {
+			        	tblUsers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+			        } else {
+			        	tblUsers.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+			        }
+			}
+		});
+		tblUsers.setToolTipText("Double-click to edit");
+
 		tblUsers.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -156,10 +170,10 @@ public class ClientMain extends JFrame {
 				return columnTypes[columnIndex];
 			}
 			boolean[] columnEditables = new boolean[] {
-				false, true, true, true, true, true, true, true, true
+				false, false, false, false, false, false, false, false, false
 			};
 			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
+				return false;
 			}
 		});
 		tblUsers.getColumnModel().getColumn(0).setResizable(false);

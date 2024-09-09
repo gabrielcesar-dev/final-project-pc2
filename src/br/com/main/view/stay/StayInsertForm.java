@@ -96,6 +96,11 @@ public class StayInsertForm extends JFrame {
                     JOptionPane.showMessageDialog(null, "Invalid date format. Please enter the date in dd/MM/yyyy format.", "Input Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                
+                if (!dataFim.isAfter(dataInicio)) {
+                    JOptionPane.showMessageDialog(null, "Check-out date must be after check-in date.", "Date Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
                 try {
                     qtdPessoas = Integer.parseInt(textFieldQtdPessoas.getText());
@@ -153,7 +158,7 @@ public class StayInsertForm extends JFrame {
                     JOptionPane.showMessageDialog(null, "Please select an item from the list.", "Selection Error", JOptionPane.ERROR_MESSAGE);
                 }
 
-
+                HospedagemController hc = new HospedagemController();
 
                 Hospedagem stay = new Hospedagem(
                 	0,
@@ -166,8 +171,6 @@ public class StayInsertForm extends JFrame {
                     desconto,
                     valorFinal
                 );
-
-                HospedagemController hc = new HospedagemController();
 
                 try {
                     hc.inserir(stay); 
